@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#101114">
-    <meta name="description" content="Automatización inteligente con GitHub Actions y Firebase. Presentación de GitHub Education para GDG Medellín.">
+    <meta name="description" content="Automatización inteligente con GitHub Actions y Firebase. Presentación de GitHub Education para GDG Tacna.">
     <title>Automatización Inteligente — GitHub Actions + Firebase</title>
     <link rel="stylesheet" href="presentacion.css">
     <script src="presentacion.js" defer></script>
@@ -14,7 +14,7 @@
       <div class="ambient ambient-one" aria-hidden="true"></div>
       <div class="ambient ambient-two" aria-hidden="true"></div>
       <header class="topbar">
-        <a class="wordmark" href="#" aria-label="Ir a la primera diapositiva"><span class="mark">G</span><span>GitHub Education<small>GDG MEDELLÍN</small></span></a>
+        <a class="wordmark" href="#" aria-label="Ir a la primera diapositiva"><span class="mark">G</span><span>GitHub Education<small>GDG TACNA</small></span></a>
         <div class="top-meta"><span class="live-dot"></span> CHARLA · AUTOMATIZACIÓN</div>
         <button class="icon-button fullscreen-button" type="button" aria-label="Activar pantalla completa" title="Pantalla completa">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M21 16v5h-5M3 16v5h5"/></svg>
@@ -24,7 +24,7 @@
       <div class="slides" aria-live="polite" aria-atomic="true">
         <section class="slide slide-cover is-active" aria-label="Diapositiva 1: portada">
           <div class="cover-copy">
-            <span class="kicker reveal">GitHub Education <i></i> GDG Medellín</span>
+            <span class="kicker reveal">GitHub Education <i></i> GDG Tacna</span>
             <h1 class="reveal delay-1">Automatización<br><em>inteligente.</em></h1>
             <p class="cover-subtitle reveal delay-2">GitHub Actions <span>+</span> Firebase</p>
             <div class="cover-bottom reveal delay-3"><span class="cover-line"></span><span>Del código al despliegue, sin pasos manuales.</span></div>
@@ -36,10 +36,11 @@
             <div class="float-chip chip-firebase"><span class="firebase-icon">✦</span> FIREBASE</div>
             <div class="orbit-point point-one"></div><div class="orbit-point point-two"></div>
           </div>
-          <span class="cover-index">01 <b>/</b> 31</span>
+          <span class="cover-index">01 <b>/</b> 15</span>
         </section>
 
-        <section class="slide" aria-label="Diapositiva 2: presentación del speaker">
+        <section class="slide speaker-slide" aria-label="Diapositiva 2: presentación del speaker">
+          <div class="speaker-flow-bg" aria-hidden="true"><span>on: push</span><i></i><span>jobs</span><i></i><span>deploy</span></div>
           <div class="slide-heading reveal"><span class="kicker">01 — PRESENTACIÓN</span><h2>Hola, soy <em>Eduardo.</em></h2></div>
           <div class="speaker-layout">
             <div class="speaker-avatar reveal delay-1"><img src="assets/eduardo-speaker.jpg" alt="Eduardo Ormeño presentando en un auditorio"><i>✳</i></div>
@@ -50,13 +51,12 @@
                 <div class="credential"><span class="credential-icon">⌘</span><strong>GitHub Campus Expert</strong><small>Educación y comunidad</small></div>
                 <div class="credential"><span class="credential-icon">◎</span><strong>GDG Organizer</strong><small>Ica · Perú</small></div>
               </div>
-              <span class="handle">@eduorm1</span>
             </div>
           </div>
         </section>
 
-        <section class="slide" aria-label="Diapositiva 3: qué son GitHub Actions">
-          <div class="slide-heading reveal"><span class="kicker">02 — FUNDAMENTOS</span><h2>¿Qué son GitHub <em>Actions?</em></h2><p>Una forma de automatizar tareas dentro de tus proyectos de software.</p></div>
+        <section class="slide is-removed" aria-label="Diapositiva eliminada: fundamentos de GitHub Actions">
+        <div class="slide-heading reveal"><span class="kicker">02 — FUNDAMENTOS</span><h2>¿Qué son GitHub <em>Actions?</em></h2><p>Una forma de automatizar tareas dentro de tus proyectos de software.</p></div>
           <div class="feature-row">
             <article class="feature-card reveal delay-1"><span class="feature-number">01</span><span class="feature-symbol">{ }</span><h3>Definidas en YAML</h3><p>Los workflows viven junto al código, dentro del repositorio.</p></article>
             <article class="feature-card reveal delay-2"><span class="feature-number">02</span><span class="feature-symbol">▣</span><h3>Se ejecutan en runners</h3><p>Usa máquinas alojadas por GitHub o runners propios.</p></article>
@@ -64,31 +64,33 @@
           </div>
         </section>
 
-        <section class="slide" aria-label="Diapositiva 4: anatomía de un workflow">
-          <div class="slide-heading reveal"><span class="kicker">03 — ANATOMÍA</span><h2>Un workflow, paso <em>a paso.</em></h2><p>Cuatro piezas se unen para automatizar una tarea.</p></div>
-          <div class="anatomy-layout">
-            <div class="anatomy-stack">
-              <div class="anatomy-item anatomy-workflow reveal delay-1"><span class="anatomy-icon">⌁</span><div><b>Workflow</b><small>El proceso completo</small></div><span class="anatomy-tag">test.yml</span></div>
-              <div class="anatomy-item anatomy-job reveal delay-2"><span class="anatomy-icon">▦</span><div><b>Job</b><small>Un conjunto de tareas</small></div><span class="anatomy-tag">test</span></div>
-              <div class="anatomy-item anatomy-step reveal delay-3"><span class="anatomy-icon">☷</span><div><b>Step</b><small>Una instrucción del job</small></div><span class="anatomy-tag">step</span></div>
-              <div class="anatomy-item anatomy-action reveal delay-4"><span class="anatomy-icon">✳</span><div><b>Action</b><small>Una pieza reutilizable</small></div><span class="anatomy-tag">uses:</span></div>
+        <section class="slide workflow-anatomy-slide" aria-label="Diapositiva 3: anatomía animada de un workflow">
+          <div class="workflow-ambient" aria-hidden="true"><span>push</span><span>job</span><span>uses</span><span>run</span><span>✓</span></div>
+          <div class="slide-heading reveal"><span class="kicker">02 — WORKFLOW</span><h2>Así se construye<br>un <em>workflow.</em></h2><p>La misma estructura puede adaptarse a distintos eventos, jobs, sistemas y tareas.</p></div>
+          <div class="workflow-demo-layout">
+            <div class="workflow-parts" aria-label="Partes del workflow">
+              <article class="workflow-part workflow-part-events reveal delay-1"><span>01</span><div><small>CUÁNDO EMPIEZA</small><b>name + on</b><p>push · pull_request · schedule</p></div></article>
+              <article class="workflow-part workflow-part-jobs reveal delay-2"><span>02</span><div><small>DÓNDE SE EJECUTA</small><b>jobs + runs-on</b><p>build · test · deploy / ubuntu · windows · macOS</p></div></article>
+              <article class="workflow-part workflow-part-steps reveal delay-3"><span>03</span><div><small>QUÉ HACE</small><b>steps</b><p><code>uses:</code> una Action · <code>run:</code> un comando</p></div></article>
             </div>
-            <div class="code-window workflow-code reveal delay-2"><div class="window-bar"><span></span><span></span><span></span><label>test.yml</label></div><pre><code><span class="yaml-workflow"><i>name:</i> <b>Test</b>
-<i>on:</i> <b>[push]</b></span>
+            <div class="code-window workflow-code reveal delay-1"><div class="window-bar"><span></span><span></span><span></span><label>ci.yml</label></div><pre><code><span class="yaml-block yaml-block-one"><i>name:</i> <b>CI de DevFest</b>
+<i>on:</i> [<b>push</b>, <b>pull_request</b>, <b>workflow_dispatch</b>]</span>
 
-<span class="yaml-job"><i>jobs:</i>
-  <i>test:</i>
+<span class="yaml-block yaml-block-two"><i>jobs:</i>
+  <i>build-and-test:</i>
     <i>runs-on:</i> <b>ubuntu-latest</b></span>
-    <span class="yaml-steps"><i>steps:</i>
-      - <i>uses:</i> <b>actions/checkout@v4</b>
-      - <i>uses:</i> <b>actions/setup-node@v4</b>
-      - <i>run:</i> <b>npm install</b>
-      - <i>run:</i> <b>npm test</b></span></code></pre></div>
+
+<span class="yaml-block yaml-block-three"><i>steps:</i>
+  - <i>uses:</i> <b>actions/checkout@v4</b>
+  - <i>uses:</i> <b>actions/setup-node@v4</b>
+  - <i>run:</i> <b>npm ci</b>
+  - <i>run:</i> <b>npm test</b></span></code></pre></div>
           </div>
+          <p class="workflow-demo-note reveal delay-4"><span class="green-pulse"></span> EVENTO → JOB → RUNNER → STEPS</p>
         </section>
 
-        <section class="slide" aria-label="Diapositiva 5: sistemas operativos disponibles para runners">
-          <div class="slide-heading reveal"><span class="kicker">04 — RUNNERS</span><h2>Elige dónde corre<br>tu <em>workflow.</em></h2><p>Cada job puede ejecutarse en el sistema operativo que necesites probar.</p></div>
+        <section class="slide is-removed" aria-label="Diapositiva eliminada: sistemas operativos">
+        <div class="slide-heading reveal"><span class="kicker">04 — RUNNERS</span><h2>Elige dónde corre<br>tu <em>workflow.</em></h2><p>Cada job puede ejecutarse en el sistema operativo que necesites probar.</p></div>
           <div class="runner-grid">
             <article class="runner-card reveal delay-1"><div class="runner-top"><span>01 · LINUX</span><b>●</b></div><h3>Ubuntu</h3><p>Una opción versátil para compilar, probar y desplegar.</p><code>ubuntu-latest</code></article>
             <article class="runner-card runner-windows reveal delay-2"><div class="runner-top"><span>02 · WINDOWS</span><b>▦</b></div><h3>Windows</h3><p>Ideal para validar aplicaciones y herramientas del ecosistema Windows.</p><code>windows-latest</code></article>
@@ -97,221 +99,167 @@
           <p class="slide-note reveal delay-4">El sistema se selecciona con <code>runs-on</code> en cada job.</p>
         </section>
 
-        <section class="slide" aria-label="Diapositiva 6: automatizar tareas de pull requests con Actions">
-          <div class="slide-heading reveal"><span class="kicker">05 — AUTOMATIZACIÓN DE PR</span><h2>Una Action, muchas<br>tareas <em>automáticas.</em></h2><p>Al abrir un pull request, una Action puede preparar el trabajo del equipo.</p></div>
+        <section class="slide is-removed" aria-label="Diapositiva eliminada: automatización de pull requests">
+        <div class="slide-heading reveal"><span class="kicker">05 — AUTOMATIZACIÓN DE PR</span><h2>Una Action, muchas<br>tareas <em>automáticas.</em></h2><p>Al abrir un pull request, una Action puede preparar el trabajo del equipo.</p></div>
           <div class="automation-flow">
             <div class="automation-trigger reveal delay-1"><span class="automation-symbol">⑂</span><small>EVENTO</small><strong>Pull request<br>abierto</strong><code>pull_request</code></div>
             <span class="automation-connector reveal delay-2" aria-hidden="true">→</span>
             <div class="automation-action reveal delay-2"><span>✳</span><small>GITHUB ACTION</small><strong>Reglas del equipo</strong></div>
             <span class="automation-connector reveal delay-3" aria-hidden="true">→</span>
-            <div class="automation-results reveal delay-3"><div><b>01</b><span>Asignar revisores</span><i>✓</i></div><div><b>02</b><span>Asignar responsables</span><i>✓</i></div><div><b>03</b><span>Añadir labels</span><i>✓</i></div><div><b>04</b><span>Publicar un comentario</span><i>✓</i></div></div>
+            <div class="automation-results reveal delay-3"><div><b>01</b><span>Asignar revisores</span><i>✓</i></div><div><b>02</b><span>Asignar responsables</span><i>✓</i></div><div><b>03</b><span> añadir labels</span><i>✓</i></div><div><b>04</b><span>Publicar un comentario</span><i>✓</i></div></div>
           </div>
           <div class="automation-foot reveal delay-4"><span class="green-pulse"></span> MENOS TAREAS REPETITIVAS · MÁS TIEMPO PARA EL CODE REVIEW</div>
         </section>
 
-        <section class="slide" aria-label="Diapositiva 7: configuración de GitHub-hosted runners">
-          <div class="slide-heading reveal"><span class="kicker">06 — CONFIGURAR EL RUNNER</span><h2>Una matriz.<br><em>Tres sistemas.</em></h2><p><code>strategy.matrix</code> repite el job; <code>runs-on</code> elige el runner para cada sistema.</p></div>
-          <div class="runner-matrix-layout">
-            <div class="code-window runner-matrix-code reveal delay-1"><div class="window-bar"><span></span><span></span><span></span><label>ci.yml</label></div><pre><code><i>jobs:</i>
-  <i>test:</i>
-    <span class="matrix-highlight"><i>strategy:</i>
-      <i>matrix:</i>
-        <i>os:</i> [<b>ubuntu-latest</b>, <b>windows-latest</b>,
-              <b>macos-latest</b>]
-    <i>runs-on:</i> <b>${{ matrix.os }}</b></span>
-    <i>steps:</i>
-      - <i>uses:</i> <b>actions/checkout@v4</b>
-      - <i>run:</i> <b>npm test</b></code></pre></div>
-            <aside class="hosted-runner-card reveal delay-2" aria-label="Dónde se ejecutan los runners alojados por GitHub">
-              <div class="hosted-runner-heading"><span class="hosted-label"><i></i> HOSTED BY GITHUB</span><h3>GitHub-hosted<br>runner</h3><p>GitHub prepara y administra la máquina para ejecutar cada job.</p></div>
-              <div class="runner-provider provider-azure"><span class="provider-icon">◈</span><div><small>AZURE</small><strong>Ubuntu + Windows</strong><span>Runners alojados en Azure</span></div></div>
-              <div class="runner-provider provider-macos"><span class="provider-icon">⌘</span><div><small>MACOS</small><strong>Runner de macOS</strong><span>Entorno para builds de Apple</span></div></div>
-              <p class="hosted-runner-note">La matriz lanza el mismo job en cada sistema.</p>
-            </aside>
+        <section class="slide workflow-run-slide" aria-label="Diapositiva 4: workflow ejecutándose en GitHub Actions">
+          <div class="slide-heading reveal"><span class="kicker">03 — EJECUCIÓN REAL</span><h2>Un workflow.<br><em>Un job visible.</em></h2><p>GitHub muestra el evento, el job y la ejecución de cada step.</p></div>
+          <div class="github-run-layout">
+            <aside class="github-run-sidebar reveal delay-1"><div class="github-breadcrumb"><span>eduardoorm</span><b>/</b><strong>gdg-tacna</strong></div><div class="github-tabs"><span>Code</span><span class="selected">Actions</span><span>Pull requests</span></div><div class="workflow-list-label">All workflows</div><div class="workflow-list-row selected"><span>✓</span><div><b>CI de DevFest</b><small>YAML workflow</small></div></div><div class="workflow-list-row"><span>◇</span><div><b>Deploy Firebase</b><small>YAML workflow</small></div></div></aside>
+            <section class="github-run-main reveal delay-2"><div class="github-run-header"><div><span class="run-success-dot">✓</span><strong>CI de DevFest</strong><small>#48 · feat: add matrix</small></div><span class="run-status">completed</span></div><div class="github-run-job"><button class="github-job-head" type="button"><span class="job-chevron">⌄</span><span class="job-success">✓</span><div><strong>build-and-test</strong><small>ubuntu-latest · 28s</small></div><b>✓</b></button><ol class="github-run-steps"><li><span>1</span><div><b>Set up job</b><small>Completed 1s</small></div><i>✓</i></li><li><span>2</span><div><b>Run actions/checkout@v4</b><small>Completed 2s</small></div><i>✓</i></li><li><span>3</span><div><b>Run actions/setup-node@v4</b><small>Node.js 22 configured</small></div><i>✓</i></li><li><span>4</span><div><b>Run npm ci</b><small>Completed 8s</small></div><i>✓</i></li><li><span>5</span><div><b>Run npm test</b><small>All tests passed</small></div><i>✓</i></li><li><span>6</span><div><b>Complete job</b><small>Completed 0s</small></div><i>✓</i></li></ol></div><div class="github-run-foot"><span>✓ CI de DevFest</span><small>push · main · 32s</small></div></section>
           </div>
         </section>
 
-        <section class="slide" aria-label="Diapositiva 8: mismos pasos en tres runners">
-          <div class="slide-heading reveal"><span class="kicker">07 — MATRIX EN ACCIÓN</span><h2>Tres runners.<br><em>Los mismos pasos.</em></h2><p>La matrix crea un job por sistema. Cada runner clona el repo, instala Node.js y ejecuta la aplicación.</p></div>
-          <div class="matrix-execution-grid">
-            <article class="execution-runner reveal delay-1"><div class="execution-head"><span class="execution-icon">◈</span><div><small>LINUX · JOB 01</small><h3>Ubuntu</h3></div><span class="execution-status">RUNNER 1</span></div><ol class="execution-steps"><li><b>01</b><span>Clonar repo</span><small>checkout</small></li><li><b>02</b><span>Instalar Node.js</span><small>setup-node</small></li><li><b>03</b><span>Ejecutar Node.js</span><small>node app.js</small></li></ol></article>
-            <article class="execution-runner execution-windows reveal delay-2"><div class="execution-head"><span class="execution-icon">⊞</span><div><small>WINDOWS · JOB 02</small><h3>Windows</h3></div><span class="execution-status">RUNNER 2</span></div><ol class="execution-steps"><li><b>01</b><span>Clonar repo</span><small>checkout</small></li><li><b>02</b><span>Instalar Node.js</span><small>setup-node</small></li><li><b>03</b><span>Ejecutar Node.js</span><small>node app.js</small></li></ol></article>
-            <article class="execution-runner execution-macos reveal delay-3"><div class="execution-head"><span class="execution-icon">⌘</span><div><small>MACOS · JOB 03</small><h3>macOS</h3></div><span class="execution-status">RUNNER 3</span></div><ol class="execution-steps"><li><b>01</b><span>Clonar repo</span><small>checkout</small></li><li><b>02</b><span>Instalar Node.js</span><small>setup-node</small></li><li><b>03</b><span>Ejecutar Node.js</span><small>node app.js</small></li></ol></article>
-          </div>
-          <p class="matrix-execution-note reveal delay-4"><span class="green-pulse"></span> 3 AMBIENTES INDEPENDIENTES · 3 VECES LA MISMA SECUENCIA</p>
-        </section>
-
-        <section class="slide slide-run-summary" aria-label="Diapositiva 9: resumen visual de los tres jobs ejecutados">
-          <div class="slide-heading reveal"><span class="kicker">08 — RESULTADO DE LA MATRIX</span><h2>Un workflow.<br><em>Tres jobs completados.</em></h2><p>GitHub ejecuta la misma secuencia en cada sistema y reporta el resultado por separado.</p></div>
-          <div class="run-summary-layout">
-            <section class="actions-run-panel reveal delay-1" aria-label="Simulación del resumen de ejecución de GitHub Actions">
-              <div class="actions-run-top"><span class="github-mark">●</span><div><small>GITHUB ACTIONS · WORKFLOW</small><strong>CI / Node.js</strong></div><span class="run-menu">···</span></div>
-              <div class="run-success"><span>✓</span><div><strong>All jobs have passed</strong><small>3 jobs · main · workflow completed</small></div></div>
-              <div class="run-job-list">
-                <div class="run-job"><span class="job-check">✓</span><span class="job-name">test (ubuntu-latest)</span><small>32s</small><span class="job-chevron">›</span></div>
-                <div class="run-job"><span class="job-check">✓</span><span class="job-name">test (windows-latest)</span><small>41s</small><span class="job-chevron">›</span></div>
-                <div class="run-job"><span class="job-check">✓</span><span class="job-name">test (macos-latest)</span><small>36s</small><span class="job-chevron">›</span></div>
-              </div>
-              <div class="run-panel-foot"><span class="green-pulse"></span> MATRIX · 3 JOBS INDEPENDIENTES</div>
-            </section>
-            <section class="run-steps-panel reveal delay-2" aria-label="Pasos ejecutados por cada job">
-              <span class="run-section-label">LOS MISMOS STEPS</span>
-              <h3>Qué hizo cada runner</h3>
-              <ol class="run-steps-list"><li><span>01</span><div><b>Clonar el repo</b><small>actions/checkout</small></div><i>✓</i></li><li><span>02</span><div><b>Instalar Node.js</b><small>actions/setup-node</small></div><i>✓</i></li><li><span>03</span><div><b>Ejecutar Node.js</b><small>node app.js</small></div><i>✓</i></li></ol>
-              <p>La secuencia se repite dentro de cada job.</p>
-            </section>
-            <section class="run-os-panel reveal delay-3" aria-label="Sistemas operativos con sus jobs exitosos">
-              <span class="run-section-label">3 ENTORNOS</span>
-              <article class="run-os-card os-linux"><span class="os-logo">◈</span><div><small>LINUX</small><b>Ubuntu</b></div><span class="os-check">✓</span><small class="os-step-summary">Repo ✓ · Node ✓ · Run ✓</small></article>
-              <article class="run-os-card os-windows"><span class="os-logo">⊞</span><div><small>WINDOWS</small><b>Windows</b></div><span class="os-check">✓</span><small class="os-step-summary">Repo ✓ · Node ✓ · Run ✓</small></article>
-              <article class="run-os-card os-macos"><span class="os-logo">⌘</span><div><small>APPLE</small><b>macOS</b></div><span class="os-check">✓</span><small class="os-step-summary">Repo ✓ · Node ✓ · Run ✓</small></article>
-              <small class="run-os-caption">Cada cuadro representa un job finalizado.</small>
-            </section>
-          </div>
-        </section>
-
-        <section class="slide" aria-label="Diapositiva 10: automatizar CI/CD">
-          <div class="slide-heading reveal"><span class="kicker">09 — CI / CD</span><h2>Automatiza el camino<br>de <em>idea a producción.</em></h2></div>
-          <div class="pipeline reveal delay-1"><div class="pipeline-node"><span>⌘</span><b>Commit</b></div><div class="pipeline-link"></div><div class="pipeline-node"><span>⚙</span><b>Build</b></div><div class="pipeline-link"></div><div class="pipeline-node"><span>✓</span><b>Test</b></div><div class="pipeline-link"></div><div class="pipeline-node"><span>◈</span><b>Deploy</b></div></div>
-          <div class="tag-cloud reveal delay-2"><span>Unit testing</span><span>Linting</span><span>Dockerizing</span><span>Security</span><span>Deployment</span></div>
-          <p class="slide-note reveal delay-3">Cada cambio puede activar una secuencia consistente y repetible.</p>
-        </section>
-
-        <section class="slide" aria-label="Diapositiva 11: automatizar repositorios">
-          <div class="slide-heading reveal"><span class="kicker">10 — EVENTOS</span><h2>Automatiza también<br>tu <em>repositorio.</em></h2><p>Los eventos de GitHub pueden iniciar acciones útiles para el equipo.</p></div>
-          <div class="event-grid">
-            <article class="event-card reveal delay-1"><div class="event-top"><span>01</span><span class="event-icon">⑂</span></div><h3>Pull requests</h3><p>Open · Closed · Merged</p><div class="event-line"><i></i><i></i><i></i></div></article>
-            <article class="event-card reveal delay-2"><div class="event-top"><span>02</span><span class="event-icon">◉</span></div><h3>Issues</h3><p>Open · Labeled · Locked</p><div class="event-line"><i></i><i></i><i></i></div></article>
-            <article class="event-card reveal delay-3"><div class="event-top"><span>03</span><span class="event-icon">♢</span></div><h3>Releases</h3><p>Created · Published</p><div class="event-line"><i></i><i></i><i></i></div></article>
-          </div>
-        </section>
-
-        <section class="slide slide-build-test" aria-label="Diapositiva 12: Build y Test antes de desplegar">
-          <div class="slide-heading reveal"><span class="kicker">11 — CALIDAD DESDE EL INICIO</span><h2>Encuentra el error<br><em>antes de desplegar.</em></h2><p>Build & Test valida cada cambio antes de que llegue a producción.</p></div>
-          <div class="build-test-layout">
-            <div class="build-test-info reveal delay-1">
-              <span class="mini-label">EL JOB DE VALIDACIÓN</span>
-              <p>No esperes al despliegue para descubrir un fallo. Ejecuta las mismas comprobaciones en cada cambio.</p>
-              <ol class="build-test-steps"><li><span>01</span><div><b>Instalar</b><small>npm ci</small></div></li><li><span>02</span><div><b>Construir</b><small>npm run build</small></div></li><li><span>03</span><div><b>Probar</b><small>npm test</small></div></li></ol>
-              <div class="build-test-result"><span class="green-pulse"></span> SOLO SI TODO PASA, CONTINÚA EL FLUJO</div>
+        <section class="slide matrix-slide" aria-label="Diapositiva 5: matrix ejecutándose en tres sistemas">
+          <div class="slide-heading reveal"><span class="kicker">04 — MATRIX</span><h2>Un job, tres<br><em>ejecuciones.</em></h2><p>La matriz toma un valor por sistema y crea los jobs en paralelo.</p></div>
+          <div class="matrix-visual">
+            <div class="matrix-source reveal delay-1"><span class="matrix-source-icon">⌘</span><div><small>DEFINICIÓN</small><b>test-${{ matrix.os }}</b><code>os: [ubuntu, windows, macos]</code></div><i class="matrix-pulse"></i></div>
+            <div class="matrix-spread" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="matrix-runners">
+              <article class="matrix-runner matrix-ubuntu reveal delay-2"><div><span>◈</span><small>JOB 01</small><h3>Ubuntu</h3></div><ol><li><b>1</b>checkout<i>✓</i></li><li><b>2</b>setup-node<i>✓</i></li><li><b>3</b>npm test<i>✓</i></li></ol><strong class="matrix-done">SUCCESS</strong></article>
+              <article class="matrix-runner matrix-windows reveal delay-3"><div><span>⊞</span><small>JOB 02</small><h3>Windows</h3></div><ol><li><b>1</b>checkout<i>✓</i></li><li><b>2</b>setup-node<i>✓</i></li><li><b>3</b>npm test<i>✓</i></li></ol><strong class="matrix-done">SUCCESS</strong></article>
+              <article class="matrix-runner matrix-macos reveal delay-4"><div><span>⌘</span><small>JOB 03</small><h3>macOS</h3></div><ol><li><b>1</b>checkout<i>✓</i></li><li><b>2</b>setup-node<i>✓</i></li><li><b>3</b>npm test<i>✓</i></li></ol><strong class="matrix-done">SUCCESS</strong></article>
             </div>
-            <div class="code-window build-test-code reveal delay-2"><div class="window-bar"><span></span><span></span><span></span><label>build-and-test.yml</label></div><pre><code><i>jobs:</i>
+          </div>
+          <div class="matrix-yaml-strip reveal delay-5"><code>strategy.matrix.os</code><span>→</span><code>runs-on: ${{ matrix.os }}</code><span>→</span><b>3 jobs independientes</b></div>
+        </section>
+
+        <section class="slide matrix-run-slide" aria-label="Diapositiva 6: matrix ejecutándose en GitHub Actions">
+          <div class="slide-heading reveal"><span class="kicker">05 — MATRIX EN ACCIÓN</span><h2>La matriz genera<br><em>tres jobs reales.</em></h2><p>GitHub ejecuta un job por cada valor de <code>matrix.os</code>.</p></div>
+          <div class="github-matrix-layout"><aside class="github-matrix-sidebar reveal delay-1"><div class="github-breadcrumb"><span>eduardoorm</span><b>/</b><strong>gdg-tacna</strong></div><div class="github-tabs"><span>Code</span><span class="selected">Actions</span><span>Pull requests</span></div><div class="matrix-summary"><span class="matrix-summary-check">✓</span><strong>CI de DevFest</strong><small>#49 · build-and-test</small></div><div class="matrix-os-list"><div><span>◈</span><b>ubuntu-latest</b><i>✓</i></div><div><span>⊞</span><b>windows-latest</b><i>✓</i></div><div><span>⌘</span><b>macos-latest</b><i>✓</i></div></div></aside><section class="github-matrix-main reveal delay-2"><div class="github-run-header"><div><span class="run-success-dot">✓</span><strong>All jobs have passed</strong><small>3 jobs · matrix.os · 41s</small></div><span class="run-status">completed</span></div><div class="github-matrix-jobs"><article><div class="matrix-job-head"><span>◈</span><strong>test (ubuntu-latest)</strong><small>32s</small><b>✓</b></div><ol><li>Set up job <i>✓</i></li><li>Run checkout <i>✓</i></li><li>Run npm test <i>✓</i></li></ol></article><article><div class="matrix-job-head"><span>⊞</span><strong>test (windows-latest)</strong><small>41s</small><b>✓</b></div><ol><li>Set up job <i>✓</i></li><li>Run checkout <i>✓</i></li><li>Run npm test <i>✓</i></li></ol></article><article><div class="matrix-job-head"><span>⌘</span><strong>test (macos-latest)</strong><small>36s</small><b>✓</b></div><ol><li>Set up job <i>✓</i></li><li>Run checkout <i>✓</i></li><li>Run npm test <i>✓</i></li></ol></article></div></section></div>
+        </section>
+
+        <section class="slide automation-unified-slide" aria-label="Diapositiva 7: automatizar CI/CD y repositorios">
+          <div class="slide-heading reveal"><span class="kicker">06 — AUTOMATIZACIÓN</span><h2>Automatiza el código.<br><em>Automatiza el equipo.</em></h2><p>GitHub Actions responde a cambios, Pull Requests, issues, releases y despliegues.</p></div>
+          <div class="automation-unified-grid"><article class="automation-track reveal delay-1"><span class="track-label">CI / CD</span><h3>Del commit a producción</h3><div class="track-flow"><span>Commit</span><i>→</i><span>Build</span><i>→</i><span>Test</span><i>→</i><span>Deploy</span></div><p>Builds, pruebas, seguridad y publicaciones.</p></article><article class="automation-track automation-track-repo reveal delay-2"><span class="track-label">REPOSITORIO</span><h3>Del evento a la acción</h3><div class="track-flow"><span>PR</span><i>→</i><span>Issue</span><i>→</i><span>Release</span><i>→</i><span>Acción</span></div><p>Labels, revisores, comentarios y clasificación.</p></article></div>
+          <p class="automation-unified-note reveal delay-3"><span class="green-pulse"></span> UN MISMO MECANISMO · MÚLTIPLES PROCESOS</p>
+        </section>
+
+        <section class="slide github-cicd-slide" aria-label="Diapositiva 8: CI/CD ejecutándose en GitHub con Firebase">
+          <div class="slide-heading reveal"><span class="kicker">07 — CI / CD EN ACCIÓN</span><h2>Del commit al<br><em>despliegue.</em></h2><p>GitHub ejecuta CI antes de desplegar Firebase Hosting cuando el cambio llega a main.</p></div>
+          <div class="github-cicd-layout"><section class="github-cicd-run reveal delay-1"><div class="github-run-header"><div><span class="run-success-dot">✓</span><strong>CI / CD DevFest</strong><small>#50 · push a main</small></div><span class="run-status">completed</span></div><div class="github-pipeline"><article class="github-pipeline-job"><span class="pipeline-job-icon">⌘</span><div><small>JOB 1</small><strong>build-and-test</strong><code>ubuntu-latest</code></div><ol><li>checkout <i>✓</i></li><li>npm ci <i>✓</i></li><li>npm test <i>✓</i></li></ol></article><div class="github-pipeline-arrow"><span>needs</span><i>→</i></div><article class="github-pipeline-job deploy-job"><span class="pipeline-job-icon">✦</span><div><small>JOB 2</small><strong>deploy-firebase</strong><code>firebase hosting</code></div><ol><li>build <i>✓</i></li><li>upload public/ <i>✓</i></li><li>channel live <i>✓</i></li></ol></article></div><div class="github-firebase-url"><span>Hosting URL</span><b>https://gdg-tacna.web.app</b><i>↗</i></div></section><aside class="github-cicd-code reveal delay-2"><div class="code-window"><div class="window-bar"><span></span><span></span><span></span><label>main.yml</label></div><pre><code><i>on:</i>
+  <i>push:</i>
+    <i>branches:</i> [<b>main</b>]
+
+<i>jobs:</i>
   <i>build-and-test:</i>
     <i>runs-on:</i> <b>ubuntu-latest</b>
     <i>steps:</i>
-      - <i>uses:</i> <b>actions/checkout@v4</b>
-      - <i>uses:</i> <b>actions/setup-node@v4</b>
-        <i>with:</i>
-          <i>node-version:</i> <b>22</b>
       - <i>run:</i> <b>npm ci</b>
-      - <i>run:</i> <b>npm run build</b>
-      - <i>run:</i> <b>npm test</b></code></pre></div>
-          </div>
-        </section>
+      - <i>run:</i> <b>npm test</b>
 
-        <section class="slide slide-context" aria-label="Diapositiva 14: usar el contexto GitHub en un workflow">
-          <div class="slide-heading reveal"><span class="kicker">13 — CONTEXTO</span><h2>Datos del evento,<br><em>directo en YAML.</em></h2><p>El contexto <code>github</code> permite personalizar mensajes y decisiones en cada ejecución.</p></div>
-          <div class="context-layout">
-            <div class="context-panel reveal delay-1"><div class="context-label"><span class="context-dot"></span> VALORES DISPONIBLES</div><div class="context-grid"><code>github.repository</code><code>github.ref_name</code><code>github.sha</code><code>github.actor</code><code>github.event_name</code></div><p class="context-tip">Úsalos en expresiones <code>${{ ... }}</code> dentro del workflow.</p></div>
-            <div class="code-window context-code reveal delay-2"><div class="window-bar"><span></span><span></span><span></span><label>context.yml</label></div><pre><code><i>jobs:</i>
-  <i>info:</i>
-    <i>runs-on:</i> <b>ubuntu-latest</b>
+  <i>deploy-firebase:</i>
+    <i>needs:</i> <b>build-and-test</b>
     <i>steps:</i>
-      - <i>name:</i> <b>Mostrar contexto</b>
-        <i>env:</i>
-          <i>REPOSITORY:</i> <b>${{ github.repository }}</b>
-          <i>REF_NAME:</i> <b>${{ github.ref_name }}</b>
-          <i>EVENT_NAME:</i> <b>${{ github.event_name }}</b>
-        <i>run:</i> <b>|</b>
-          <b>echo "Repo: $REPOSITORY"</b>
-          <b>echo "Rama: $REF_NAME"</b>
-          <b>echo "Evento: $EVENT_NAME"</b></code></pre></div>
-          </div>
+      - <i>uses:</i> <b>FirebaseExtended/action-hosting-deploy@v0</b></code></pre></div></aside></div>
         </section>
 
-        <section class="slide slide-secrets" aria-label="Diapositiva 15: usar secretos de GitHub en Firebase">
-          <div class="slide-heading reveal"><span class="kicker">14 — SEGURIDAD</span><h2>Los secretos no van<br>en el <em>código.</em></h2><p>Guarda las credenciales en GitHub Secrets e inyéctalas solo durante el despliegue.</p></div>
-          <div class="secrets-example-layout">
-            <div class="secret-visual reveal delay-1"><div class="lock-orbit"></div><div class="lock"><span>⌑</span><i>••••••</i></div><span class="secret-badge">GITHUB SECRET</span><div class="secret-visual-note"><b>FIREBASE_SERVICE_ACCOUNT</b><span>Configurado en Settings → Secrets</span></div></div>
-            <div class="code-window secrets-code reveal delay-2"><div class="window-bar"><span></span><span></span><span></span><label>deploy.yml</label></div><pre><code><i>steps:</i>
-  - <i>uses:</i> <b>FirebaseExtended/action-hosting-deploy@v0</b>
-    <i>with:</i>
-      <i>repoToken:</i> <b>${{ secrets.GITHUB_TOKEN }}</b>
-      <i>firebaseServiceAccount:</i>
-        <b>${{ secrets.FIREBASE_SERVICE_ACCOUNT }}</b>
-      <i>projectId:</i> <b>my-firebase-project</b></code></pre>
-              <p class="secrets-code-note"><span class="green-pulse"></span> El valor sensible no aparece en el YAML ni en los logs.</p>
+        <section class="slide is-removed" aria-label="Diapositiva retirada: repositorios separado"></section>
+        <section class="slide is-removed" aria-label="Diapositiva retirada: automatización duplicada">
+          <div class="slide-heading reveal"><span class="kicker">06 — AUTOMATIZACIÓN</span></div>
+        </section>
+
+        <section class="slide context-demo-slide" aria-label="Diapositiva 6: contexto de GitHub en un workflow">
+          <div class="slide-heading reveal"><span class="kicker">05 — CONTEXTO</span><h2>El workflow sabe<br><em>qué está pasando.</em></h2><p>Cada ejecución recibe datos del evento que puedes usar en tus steps.</p></div>
+          <div class="context-demo-layout">
+            <div class="context-event reveal delay-1"><span>⑂</span><small>EVENTO</small><b>Pull Request abierto</b><code>pull_request</code></div>
+            <div class="context-values">
+              <span class="ctx-chip ctx-1"><b>repositorio</b><code>github.repository</code><em>eduardoorm/gdg-tacna</em></span>
+              <span class="ctx-chip ctx-2"><b>rama del PR</b><code>github.head_ref</code><em>feature/login</em></span>
+              <span class="ctx-chip ctx-3"><b>autor</b><code>github.actor</code><em>eduardoorm</em></span>
+              <span class="ctx-chip ctx-4"><b>commit</b><code>github.sha</code><em>a1b2c3d</em></span>
             </div>
+            <div class="code-window context-code reveal delay-3"><div class="window-bar"><span></span><span></span><span></span><label>context.yml</label></div><pre><code><i>env:</i>
+  <i>REPO:</i> <b>${{ github.repository }}</b>
+  <i>RAMA:</i> <b>${{ github.head_ref }}</b>
+  <i>ACTOR:</i> <b>${{ github.actor }}</b>
+<i>run:</i> <b>echo "$ACTOR abrió un PR desde $RAMA"</b></code></pre><div class="context-log"><span>▸</span> eduardoorm abrió un PR desde feature/login</div></div>
           </div>
         </section>
 
-        <section class="slide slide-reuse" aria-label="Diapositiva 16: workflows reutilizables después de secretos">
-          <div class="slide-heading reveal"><span class="kicker">15 — REUTILIZACIÓN</span><h2>Conecta y reutiliza<br><em>workflows.</em></h2><p><code>workflow_run</code> inicia un flujo al terminar otro; <code>workflow_call</code> permite compartirlo e invocarlo.</p></div>
-          <div class="reuse-layout">
-            <article class="reuse-card reuse-run-card reveal delay-1">
-              <div class="reuse-card-heading"><span class="reuse-icon">↻</span><span class="mini-label">AL TERMINAR OTRO WORKFLOW</span><h3>workflow_run</h3><p>Despliega después de que termine el workflow <b>Build</b>, solo si fue exitoso.</p></div>
-              <div class="code-window reuse-code"><div class="window-bar"><span></span><span></span><span></span><label>deploy.yml</label></div><pre><code><i>on:</i>
+        <section class="slide secrets-demo-slide" aria-label="Diapositiva 7: secretos de GitHub">
+          <div class="slide-heading reveal"><span class="kicker">06 — SECRETOS</span><h2>El secreto vive en GitHub.<br><em>No en tu código.</em></h2><p>Lo configuras una vez y el workflow lo recibe solo cuando se ejecuta.</p></div>
+          <div class="secrets-flow">
+            <div class="gh-secret-panel reveal delay-1">
+              <div class="gh-crumbs">Settings › Secrets and variables › Actions</div>
+              <div class="gh-form">
+                <span class="gh-label">Name</span>
+                <div class="gh-input"><span class="type-name">GEMINI_API_KEY</span></div>
+                <span class="gh-label">Secret</span>
+                <div class="gh-input"><span class="type-value">••••••••••••••••</span></div>
+                <div class="gh-button">Add secret</div>
+              </div>
+              <div class="gh-list"><span class="gh-list-title">Repository secrets</span><div class="gh-secret-row"><b>GEMINI_API_KEY</b><small>Updated now</small></div></div>
+            </div>
+            <div class="secrets-link" aria-hidden="true">→</div>
+            <div class="code-window secrets-use-code"><div class="window-bar"><span></span><span></span><span></span><label>gemini-review.yml</label></div><pre><code><i>steps:</i>
+  - <i>uses:</i> <b>google-github-actions/run-gemini-cli@main</b>
+    <i>env:</i>
+      <i>GEMINI_API_KEY:</i> <span class="secret-ref"><b>${{ secrets.GEMINI_API_KEY }}</b></span></code></pre><div class="secret-log"><span>▸</span> GEMINI_API_KEY: ***</div></div>
+          </div>
+          <p class="secrets-demo-note reveal delay-4"><span class="green-pulse"></span> EL VALOR NUNCA SE ESCRIBE EN EL YAML NI SE MUESTRA EN LOS LOGS</p>
+        </section>
+
+        <section class="slide reuse-demo-slide" aria-label="Diapositiva 8: reutilizar y conectar workflows">
+          <div class="slide-heading reveal"><span class="kicker">07 — REUTILIZACIÓN</span><h2>Conecta y reutiliza<br><em>workflows.</em></h2><p><code>workflow_run</code> reacciona cuando otro termina; <code>workflow_call</code> invoca uno reutilizable.</p></div>
+          <div class="reuse-demo-layout">
+            <article class="reuse-lane lane-run reveal delay-1">
+              <span class="mini-label">AL TERMINAR OTRO WORKFLOW</span><h3>workflow_run</h3>
+              <pre class="lane-code"><code><i>on:</i>
   <i>workflow_run:</i>
     <i>workflows:</i> [<b>"Build"</b>]
-    <i>types:</i> [<b>completed</b>]
-
-<i>jobs:</i>
-  <i>deploy:</i>
-    <i>if:</i> <b>github.event.workflow_run.conclusion == 'success'</b>
-    <i>runs-on:</i> <b>ubuntu-latest</b>
-    <i>steps:</i>
-      - <i>run:</i> <b>echo "Deploying application"</b></code></pre></div>
-              <div class="mini-flow"><span>Build termina</span><i>→</i><span>Deploy</span></div>
+    <i>types:</i> [<b>completed</b>]</code></pre>
+              <div class="lane-flow"><div class="lane-node node-a"><small>WORKFLOW</small><b>Build</b><i class="lane-check">✓</i></div><span class="lane-wire"><em>completed</em></span><div class="lane-node node-b"><small>SE DISPARA</small><b>Deploy</b><i class="lane-check">✓</i></div></div>
             </article>
-            <article class="reuse-card reuse-highlight reuse-call-card reveal delay-2">
-              <div class="reuse-card-heading"><span class="reuse-icon">⇄</span><span class="mini-label">DEFINE Y LLAMA UN WORKFLOW REUTILIZABLE</span><h3>workflow_call</h3><p>Define el flujo compartido y llámalo desde otro workflow.</p></div>
-              <div class="reuse-call-examples">
-                <div class="code-window reuse-code"><div class="window-bar"><span></span><span></span><span></span><label>build.yml · reusable</label></div><pre><code><i>on:</i>
-  <i>workflow_call:</i>
-
-<i>jobs:</i>
-  <i>build:</i>
-    <i>runs-on:</i> <b>ubuntu-latest</b>
-    <i>steps:</i>
-      - <i>run:</i> <b>echo "Building application"</b></code></pre></div>
-                <div class="code-window reuse-code"><div class="window-bar"><span></span><span></span><span></span><label>main.yml · caller</label></div><pre><code><i>jobs:</i>
+            <article class="reuse-lane lane-call reveal delay-2">
+              <span class="mini-label">INVOCA UN WORKFLOW REUTILIZABLE</span><h3>workflow_call</h3>
+              <pre class="lane-code"><code><i>jobs:</i>
   <i>call-build:</i>
-    <i>uses:</i> <b>./.github/workflows/build.yml</b></code></pre></div>
-              </div>
-              <div class="mini-flow"><span>Workflow A</span><i>→</i><span>Build reutilizable</span></div>
+    <i>uses:</i> <b>./.github/workflows/build.yml</b></code></pre>
+              <div class="lane-flow"><div class="lane-node node-a"><small>CALLER</small><b>main.yml</b><i class="lane-check">✓</i></div><span class="lane-wire"><em>uses:</em></span><div class="lane-node node-b"><small>REUTILIZABLE</small><b>build.yml</b><i class="lane-check">✓</i></div></div>
             </article>
           </div>
         </section>
 
-        <section class="slide slide-least-privilege" aria-label="Diapositiva 16: limitar los permisos del token GITHUB_TOKEN">
-          <div class="slide-heading reveal"><span class="kicker">15 — PRINCIPIO DE SEGURIDAD</span><h2>Solo los permisos<br><em>que necesita.</em></h2><p>Un workflow de pruebas solo necesita leer el repositorio: no le concedas acceso de escritura por defecto.</p></div>
-          <div class="least-privilege-layout">
-            <div class="least-privilege-info reveal delay-1"><div class="shield"><span>✓</span></div><span class="mini-label">PRINCIPIO DE MÍNIMO PRIVILEGIO</span><h3>Empieza con lectura.</h3><p>Declara permisos explícitos para el token <code>GITHUB_TOKEN</code>. Añade más únicamente cuando un job realmente lo requiera.</p><div class="permission-pills"><span>contents: read</span><span>sin write-all</span></div></div>
-            <div class="code-window least-privilege-code reveal delay-2"><div class="window-bar"><span></span><span></span><span></span><label>ci.yml</label></div><pre><code><i>name:</i> <b>CI</b>
-<i>on:</i> [<b>push</b>, <b>pull_request</b>]
-
-<i>permissions:</i>
-  <i>contents:</i> <b>read</b>
-
-<i>jobs:</i>
-  <i>test:</i>
-    <i>runs-on:</i> <b>ubuntu-latest</b>
-    <i>steps:</i>
-      - <i>uses:</i> <b>actions/checkout@v4</b>
-      - <i>run:</i> <b>npm test</b></code></pre></div>
+        <section class="slide permissions-demo-slide" aria-label="Diapositiva 9: permisos mínimos del token">
+          <div class="slide-heading reveal"><span class="kicker">08 — PERMISOS</span><h2>Otorga solo<br><em>lo necesario.</em></h2><p>El token <code>GITHUB_TOKEN</code> recibe únicamente los permisos que declaras para cada tarea.</p></div>
+          <div class="permission-example-grid">
+            <article class="permission-example reveal delay-1"><b>CI</b><code>contents: read</code><p>Clonar el repositorio y ejecutar pruebas.</p></article>
+            <article class="permission-example reveal delay-2"><b>PR REVIEW</b><code>pull-requests: write</code><p>Publicar comentarios en un Pull Request.</p></article>
+            <article class="permission-example reveal delay-3"><b>ISSUES</b><code>issues: write</code><p>Clasificar y etiquetar issues.</p></article>
+            <article class="permission-example reveal delay-3"><b>CLOUD DEPLOY</b><code>id-token: write</code><p>Autenticarse en la nube con OIDC, sin llaves.</p></article>
+            <article class="permission-example reveal delay-4"><b>PACKAGES</b><code>packages: write</code><p>Publicar imágenes o paquetes.</p></article>
+            <article class="permission-example reveal delay-5"><b>SEGURIDAD</b><code>security-events: write</code><p>Subir resultados de CodeQL.</p></article>
           </div>
+          <div class="permission-rule reveal delay-5"><span>permissions:</span><code>contents: read</code><code>pull-requests: write</code><small>← ejemplo de una revisión con IA</small></div>
         </section>
 
-        <section class="slide slide-environments" aria-label="Diapositiva 17: desplegar por entornos de staging a producción">
-          <div class="slide-heading reveal"><span class="kicker">16 — ENTORNOS</span><h2>De staging a <em>producción.</em></h2><p>El segundo job espera a staging; cada job usa el entorno configurado en GitHub.</p></div>
-          <div class="environment-example-layout">
-            <div class="environment-overview reveal delay-1">
-              <div class="environment-flow">
-                <article class="environment"><span class="env-icon">⌘</span><span class="mini-label">PRIMER DESPLIEGUE</span><h3>Staging</h3><p>Valida el cambio en un entorno de prueba.</p><span class="env-status">● DEPLOY-STAGING</span></article>
-                <div class="approval"><span>✓</span><small>NEEDS</small></div>
-                <article class="environment env-production"><span class="env-icon">↗</span><span class="mini-label">DESPUÉS DE STAGING</span><h3>Production</h3><p>Puede requerir aprobación antes de desplegar.</p><span class="env-status">● DEPLOY-PRODUCTION</span></article>
+        <section class="slide env-demo-slide" aria-label="Diapositiva 10: entornos de staging a producción">
+          <div class="slide-heading reveal"><span class="kicker">09 — ENTORNOS</span><h2>De staging a<br><em>producción.</em></h2><p>Cada job usa un environment; production puede esperar una aprobación manual.</p></div>
+          <div class="env-demo-layout">
+            <div class="env-run reveal delay-1">
+              <div class="env-run-top"><span class="env-run-mark">●</span><div><small>GITHUB ACTIONS · MAIN</small><strong>Deploy app</strong></div></div>
+              <div class="env-job env-job-staging">
+                <span class="env-job-icon">⌘</span>
+                <div class="env-job-info"><b>deploy-staging</b><small>environment: staging</small></div>
+                <div class="env-status"><span class="st st-queue">Queued</span><span class="st st-run"><i class="spin"></i>Running</span><span class="st st-ok">✓ Success</span></div>
               </div>
-              <div class="env-benefits"><span>Secretos por entorno</span><span>Aprobaciones manuales</span></div>
+              <div class="env-connector"><i></i><small>needs: deploy-staging</small></div>
+              <div class="env-job env-job-prod">
+                <span class="env-job-icon">↗</span>
+                <div class="env-job-info"><b>deploy-production</b><small>environment: production</small></div>
+                <div class="env-status env-status-prod"><span class="st st-queue">Queued</span><span class="st st-review">● Waiting</span><span class="st st-run"><i class="spin"></i>Running</span><span class="st st-ok">✓ Success</span></div>
+              </div>
+              <div class="env-review"><div><b>production · Review required</b><p>eduardoorm debe aprobar este despliegue</p></div><span class="env-approve">Approve and deploy</span></div>
             </div>
             <div class="code-window environments-code reveal delay-2"><div class="window-bar"><span></span><span></span><span></span><label>deploy.yml</label></div><pre><code><i>jobs:</i>
   <i>deploy-staging:</i>
@@ -325,18 +273,47 @@
     <i>runs-on:</i> <b>ubuntu-latest</b>
     <i>environment:</i> <b>production</b>
     <i>steps:</i>
-      - <i>run:</i> <b>echo "Deploying to Production"</b></code></pre>
-              <p class="environment-code-note"><span class="green-pulse"></span> Las reglas y los aprobadores se configuran en GitHub Environments.</p>
-            </div>
+      - <i>run:</i> <b>echo "Deploying to Production"</b></code></pre></div>
           </div>
         </section>
 
-        <section class="slide slide-firebase" aria-label="Diapositiva 18: desplegar en Firebase">
+        <section class="slide ai-review-slide" aria-label="Diapositiva 11: code review con Gemini">
+          <div class="slide-heading reveal"><span class="kicker">10 — DEMO CON IA</span><h2>Code Review con IA<br><em>en cada Pull Request.</em></h2><p>Gemini analiza el diff y deja comentarios dentro del proceso de revisión.</p></div>
+          <div class="ai-review-flow"><article class="ai-flow-step reveal delay-1"><span>⑂</span><small>01 · EVENTO</small><b>Desarrollador crea un PR</b><code>pull_request</code></article><i class="ai-flow-arrow reveal delay-2">→</i><article class="ai-flow-step ai-action-step reveal delay-2"><span>⌘</span><small>02 · ACTION</small><b>GitHub Actions ejecuta</b><code>run-gemini-cli</code></article><i class="ai-flow-arrow reveal delay-3">→</i><article class="ai-flow-step ai-gemini-step reveal delay-3"><span>✦</span><small>03 · GEMINI</small><b>Analiza el diff</b><code>bugs · security · performance</code></article><i class="ai-flow-arrow reveal delay-4">→</i><article class="ai-flow-step ai-comment-step reveal delay-4"><span>💬</span><small>04 · RESULTADO</small><b>Publica comentarios</b><code>inline review</code></article></div>
+          <div class="ai-review-types reveal delay-5"><span>Posibles bugs</span><span>Vulnerabilidades</span><span>Código duplicado</span><span>Rendimiento</span><span>Buenas prácticas</span></div>
+        </section>
+
+        <section class="slide ai-comment-slide" aria-label="Diapositiva 12: comentario generado por Gemini">
+          <div class="slide-heading reveal"><span class="kicker">11 — RESULTADO REAL</span><h2>Una IA como<br><em>asistente de revisión.</em></h2><p>El comentario se integra en el mismo Pull Request junto al diff.</p></div>
+          <div class="ai-comment-layout"><div class="ai-diff-panel reveal delay-1"><div class="ai-window-bar"><span></span><span></span><span></span><b>pull-request.diff</b></div><pre><code><i>-</i> for (const item of items) {
+<i>-</i>   await db.collection("users").doc(item.id).get();
+<i>-</i> }
+<b>+</b> const ids = items.map(item =&gt; item.id);
+<b>+</b> const users = await db.collection("users").get();</code></pre></div><article class="ai-comment-card reveal delay-3"><div class="ai-comment-author"><span>G</span><div><b>Gemini Code Review</b><small>hace un momento</small></div><i>···</i></div><p><strong>⚠️ Posible problema de rendimiento</strong><br>Esta función realiza una consulta a Firestore por cada elemento. Considera utilizar una consulta agrupada para reducir lecturas y costos.</p><div class="ai-comment-actions"><span>Resolve conversation</span><span>👍 &nbsp; 1</span></div></article></div>
+        </section>
+
+        <section class="slide ai-workflow-slide" aria-label="Diapositiva 13: workflow de Gemini">
+          <div class="slide-heading reveal"><span class="kicker">12 — IMPLEMENTACIÓN</span><h2>Una Action oficial.<br><em>Un workflow simple.</em></h2><p>Google proporciona <code>run-gemini-cli</code> para integrar Gemini con GitHub Actions.</p></div>
+          <div class="ai-workflow-layout"><div class="code-window ai-workflow-code reveal delay-1"><div class="window-bar"><span></span><span></span><span></span><label>gemini-review.yml</label></div><pre><code><i>on:</i> [<b>pull_request</b>]
+<i>permissions:</i>
+  <i>contents:</i> <b>read</b>
+  <i>pull-requests:</i> <b>write</b>
+<i>jobs:</i>
+  <i>gemini-review:</i>
+    <i>runs-on:</i> <b>ubuntu-latest</b>
+    <i>steps:</i>
+      - <i>uses:</i> <b>actions/checkout@v4</b>
+      - <i>uses:</i> <b>google-github-actions/run-gemini-cli@main</b>
+        <i>with:</i>
+          <i>prompt:</i> <b>"Review this pull request diff"</b></code></pre></div><aside class="ai-workflow-summary reveal delay-2"><span class="ai-summary-icon">✦</span><b>La IA recibe el contexto</b><p>Pull Request + diff + permisos + instrucciones.</p><div><span>1 · Checkout</span><span>2 · Gemini CLI</span><span>3 · Comentario</span></div></aside></div>
+        </section>
+
+        <section class="slide is-removed slide-firebase" aria-label="Diapositiva retirada: Firebase Hosting">
           <div class="firebase-copy"><span class="kicker reveal">17 — CASO PRÁCTICO</span><h2 class="reveal delay-1">Llevemos nuestra<br>app a <em>Firebase.</em></h2><p class="reveal delay-2">Primero publicamos manualmente. Después dejaremos que GitHub Actions repita el proceso por nosotros.</p><div class="firebase-checklist reveal delay-3"><span><b>01</b> Crear el proyecto Firebase</span><span><b>02</b> Preparar la carpeta <code>public/</code></span><span><b>03</b> Conectar Hosting y desplegar</span></div></div>
           <div class="firebase-art reveal delay-2" aria-hidden="true"><div class="firebase-ring"></div><div class="firebase-flame">✦</div><div class="firebase-caption">FIREBASE<br><small>HOSTING · DEPLOY</small></div><span class="spark spark-one">✳</span><span class="spark spark-two">✦</span></div>
         </section>
 
-        <section class="slide slide-firebase-prereqs" aria-label="Diapositiva 19: requisitos antes de empezar con Firebase">
+        <section class="slide is-removed slide-firebase-prereqs" aria-label="Diapositiva retirada: requisitos Firebase">
           <div class="slide-heading reveal"><span class="kicker">18 — ANTES DE EMPEZAR</span><h2>Chequeo <em>rápido.</em></h2><p>Confirma que tienes listo lo necesario antes de crear y publicar el proyecto.</p></div>
           <div class="firebase-prereq-grid">
             <article class="firebase-prereq reveal delay-1"><span>✓</span><div><b>Cuenta de GitHub</b><small>Sesión iniciada en el navegador</small></div></article>
@@ -348,7 +325,7 @@
           </div>
         </section>
 
-        <section class="slide slide-firebase-project" aria-label="Diapositiva 20: crear el proyecto en Firebase Console">
+        <section class="slide is-removed slide-firebase-project" aria-label="Diapositiva retirada: proyecto Firebase">
           <div class="slide-heading reveal"><span class="kicker">19 — PASO 1</span><h2>Crea un proyecto<br>en <em>Firebase.</em></h2><p>Firebase Console → Add project. Ese será el destino del sitio publicado con Hosting.</p></div>
           <div class="firebase-project-layout">
             <div class="project-console reveal delay-1"><div class="console-top"><span>✦</span><b>Firebase Console</b><small>console.firebase.google.com</small></div><div class="console-welcome"><span>BIENVENIDO A FIREBASE</span><h3>Empieza creando<br>un proyecto</h3><div class="console-add"><b>＋</b> Add project</div></div><div class="console-foot"><span>01</span> Nuevo proyecto para DevFest</div></div>
@@ -356,15 +333,15 @@
           </div>
         </section>
 
-        <section class="slide slide-firebase-public" aria-label="Diapositiva 21: revisar la carpeta public en Visual Studio Code">
+        <section class="slide is-removed slide-firebase-public" aria-label="Diapositiva retirada: carpeta public">
           <div class="slide-heading reveal"><span class="kicker">20 — PASO 2</span><h2>El sitio vive en<br><em>public/.</em></h2><p>Firebase Hosting publica los archivos de esta carpeta. Coloca ahí el index.html y los recursos de tu web.</p></div>
           <div class="firebase-public-layout">
-            <div class="vscode-project reveal delay-1"><div class="vscode-titlebar"><span>● ● ●</span><b>GDG Medellín — Visual Studio Code</b><small>EXPLORER</small></div><div class="vscode-tree"><div class="tree-item tree-root"><span>⌄</span> gdg-medellin</div><div class="tree-item tree-child"><span>⌄</span><b class="folder-icon">▰</b> public</div><div class="tree-item tree-child tree-file"><span></span><b class="html-icon">5</b> index.html <i>← Inicio de la web</i></div><div class="tree-item tree-child tree-file"><span></span><b class="css-icon">#</b> styles.css</div><div class="tree-item tree-child tree-file"><span></span><b class="js-icon">JS</b> app.js</div><div class="tree-item tree-file"><span>⌁</span><b class="json-icon">{ }</b> firebase.json</div></div><div class="vscode-status"><span>main</span><span>UTF-8</span><span>HTML</span></div></div>
+            <div class="vscode-project reveal delay-1"><div class="vscode-titlebar"><span>● ● ●</span><b>GDG Tacna — Visual Studio Code</b><small>EXPLORER</small></div><div class="vscode-tree"><div class="tree-item tree-root"><span>⌄</span> gdg-tacna</div><div class="tree-item tree-child"><span>⌄</span><b class="folder-icon">▰</b> public</div><div class="tree-item tree-child tree-file"><span></span><b class="html-icon">5</b> index.html <i>← Inicio de la web</i></div><div class="tree-item tree-child tree-file"><span></span><b class="css-icon">#</b> styles.css</div><div class="tree-item tree-child tree-file"><span></span><b class="js-icon">JS</b> app.js</div><div class="tree-item tree-file"><span>⌁</span><b class="json-icon">{ }</b> firebase.json</div></div><div class="vscode-status"><span>main</span><span>UTF-8</span><span>HTML</span></div></div>
             <div class="public-explainer reveal delay-2"><span class="mini-label">DIRECTORIO PÚBLICO</span><h3>¿Qué va dentro?</h3><p>El archivo de entrada debe llamarse <code>index.html</code>. Firebase lo sirve como página principal del sitio.</p><div class="public-path"><span>public</span><i>/</i><b>index.html</b></div><p class="public-note"><span class="green-pulse"></span> Al inicializar Hosting, selecciona <code>public</code> como carpeta pública.</p></div>
           </div>
         </section>
 
-        <section class="slide slide-firebase-setup" aria-label="Diapositiva 22: inicializar Firebase Hosting y desplegar manualmente">
+        <section class="slide is-removed slide-firebase-setup" aria-label="Diapositiva retirada: Firebase CLI">
           <div class="slide-heading reveal"><span class="kicker">21 — PASO 3</span><h2>Publica la primera<br><em>versión.</em></h2><p>Ejecuta estos comandos desde la raíz del repositorio para conectar y desplegar Firebase Hosting.</p></div>
           <div class="firebase-setup-layout">
             <div class="firebase-setup-steps reveal delay-1">
@@ -381,16 +358,16 @@
           <p class="firebase-repeat-note reveal delay-3"><span class="spark-icon">✳</span> Cada cambio requeriría repetir el deploy manualmente. Ese es el paso que automatizaremos.</p>
         </section>
 
-        <section class="slide slide-firebase-manual-result" aria-label="Diapositiva 23: resultado del despliegue manual en Firebase Hosting">
+        <section class="slide is-removed slide-firebase-manual-result" aria-label="Diapositiva retirada: resultado manual Firebase">
           <div class="slide-heading reveal"><span class="kicker">22 — RESULTADO MANUAL</span><h2>Deploy terminado.<br><em>La web ya está publicada.</em></h2><p>Firebase genera una URL pública y abre el sitio que estaba dentro de <code>public/</code>.</p></div>
           <div class="manual-result-layout">
-            <div class="manual-console code-window reveal delay-1"><div class="window-bar"><span></span><span></span><span></span><label>Terminal · Firebase CLI</label></div><div class="terminal-output"><p><span class="terminal-prompt">$</span> firebase deploy --only hosting</p><p class="terminal-muted">=== Deploying to 'gdgmedellin-e9172'...</p><p><span class="terminal-ok">✔</span> hosting[gdgmedellin-e9172]: file upload complete</p><p><span class="terminal-ok">✔</span> hosting[gdgmedellin-e9172]: version finalized</p><p><span class="terminal-ok">✔</span> Deploy complete!</p><p class="terminal-url-label">Hosting URL:</p><a href="https://gdgmedellin-e9172.web.app" target="_blank" rel="noreferrer">https://gdgmedellin-e9172.web.app <b>↗</b></a></div></div>
-            <div class="manual-browser browser-preview reveal delay-2"><div class="browser-chrome"><div class="browser-dots"><i></i><i></i><i></i></div><div class="browser-address"><span>⌑</span> gdgmedellin-e9172.web.app <b>↗</b></div></div><div class="browser-content"><div class="preview-nav"><span class="preview-brand"><i>DF</i> DevFest Medellín</span><small>PUBLICADO · FIREBASE HOSTING</small></div><div class="preview-hero"><span>✳ DEVFEST MEDELLÍN · 2026</span><h3>Ideas que<br><em>mueven.</em></h3><p>La versión que estaba en public/ ahora está disponible en internet.</p><div class="preview-button">SITIO EN LÍNEA <b>✓</b></div></div><div class="preview-footer"><span>FIREBASE HOSTING</span><i>✓ LIVE</i></div></div></div>
+            <div class="manual-console code-window reveal delay-1"><div class="window-bar"><span></span><span></span><span></span><label>Terminal · Firebase CLI</label></div><div class="terminal-output"><p><span class="terminal-prompt">$</span> firebase deploy --only hosting</p><p class="terminal-muted">=== Deploying to 'gdg-tacna'...</p><p><span class="terminal-ok">✔</span> hosting[gdg-tacna]: file upload complete</p><p><span class="terminal-ok">✔</span> hosting[gdg-tacna]: version finalized</p><p><span class="terminal-ok">✔</span> Deploy complete!</p><p class="terminal-url-label">Hosting URL:</p><a href="https://gdg-tacna.web.app" target="_blank" rel="noreferrer">https://gdg-tacna.web.app <b>↗</b></a></div></div>
+            <div class="manual-browser browser-preview reveal delay-2"><div class="browser-chrome"><div class="browser-dots"><i></i><i></i><i></i></div><div class="browser-address"><span>⌑</span> gdg-tacna.web.app <b>↗</b></div></div><div class="browser-content"><div class="preview-nav"><span class="preview-brand"><i>DF</i> DevFest Tacna</span><small>PUBLICADO · FIREBASE HOSTING</small></div><div class="preview-hero"><span>✳ DEVFEST TACNA · 2026</span><h3>Ideas que<br><em>mueven.</em></h3><p>La versión que estaba en public/ ahora está disponible en internet.</p><div class="preview-button">SITIO EN LÍNEA <b>✓</b></div></div><div class="preview-footer"><span>FIREBASE HOSTING</span><i>✓ LIVE</i></div></div></div>
           </div>
           <p class="firebase-live-note reveal delay-3"><span class="green-pulse"></span> Esta URL es el resultado del deploy manual; después GitHub Actions repetirá este proceso.</p>
         </section>
 
-        <section class="slide slide-firebase-actions" aria-label="Diapositiva 24: workflow de Firebase para previsualizar Pull Requests">
+        <section class="slide is-removed slide-firebase-actions" aria-label="Diapositiva retirada: preview Firebase">
           <div class="slide-heading reveal"><span class="kicker">23 — WORKFLOW DE PREVIEW</span><h2>Cada Pull Request,<br><em>una vista previa.</em></h2><p>Firebase publica el cambio en un canal temporal para revisarlo antes de integrarlo.</p></div>
           <div class="firebase-single-action reveal delay-1">
             <div class="firebase-action-title"><span>01</span><div><small>AL ABRIR O ACTUALIZAR UN PR</small><h3>Preview Channel</h3></div></div>
@@ -404,15 +381,15 @@
         <i>with:</i>
           <i>repoToken:</i> <b>${{ secrets.GITHUB_TOKEN }}</b>
           <i>firebaseServiceAccount:</i>
-            <b>${{ secrets.FIREBASE_SERVICE_ACCOUNT_GDGMEDELLIN_E9172 }}</b>
-          <i>projectId:</i> <b>gdgmedellin-e9172</b>
+            <b>${{ secrets.FIREBASE_SERVICE_ACCOUNT_GDG_TACNA }}</b>
+          <i>projectId:</i> <b>gdg-tacna</b>
           <i>channelId:</i> <b>preview</b></code></pre></div>
             <p>El equipo revisa el sitio de prueba sin tocar producción.</p>
           </div>
           <p class="firebase-actions-note reveal delay-2"><span class="green-pulse"></span> La cuenta de servicio se guarda en GitHub Secrets, nunca en el YAML.</p>
         </section>
 
-        <section class="slide slide-firebase-actions slide-firebase-merge" aria-label="Diapositiva 25: workflow de Firebase al integrar cambios a main">
+        <section class="slide is-removed slide-firebase-actions slide-firebase-merge" aria-label="Diapositiva retirada: producción Firebase">
           <div class="slide-heading reveal"><span class="kicker">24 — WORKFLOW DE PRODUCCIÓN</span><h2>Al integrar en main,<br><em>deploy Live.</em></h2><p>El push a main activa el segundo YAML y publica la versión aprobada en Firebase Hosting.</p></div>
           <div class="firebase-single-action firebase-action-live reveal delay-1">
             <div class="firebase-action-title"><span>02</span><div><small>AL INTEGRAR CAMBIOS EN MAIN</small><h3>Live Channel</h3></div></div>
@@ -428,18 +405,18 @@
         <i>with:</i>
           <i>repoToken:</i> <b>${{ secrets.GITHUB_TOKEN }}</b>
           <i>firebaseServiceAccount:</i>
-            <b>${{ secrets.FIREBASE_SERVICE_ACCOUNT_GDGMEDELLIN_E9172 }}</b>
-          <i>projectId:</i> <b>gdgmedellin-e9172</b>
+            <b>${{ secrets.FIREBASE_SERVICE_ACCOUNT_GDG_TACNA }}</b>
+          <i>projectId:</i> <b>gdg-tacna</b>
           <i>channelId:</i> <b>live</b></code></pre></div>
             <p>El mismo código revisado llega al Hosting público.</p>
           </div>
           <p class="firebase-actions-note reveal delay-2"><span class="green-pulse"></span> Preview en Pull Request · producción después del merge a main.</p>
         </section>
 
-        <section class="slide slide-firebase-sync" aria-label="Diapositiva 26: sincronizar cambios para activar GitHub Actions">
+        <section class="slide is-removed slide-firebase-sync" aria-label="Diapositiva retirada: sincronización Firebase">
           <div class="slide-heading reveal"><span class="kicker">25 — SOURCE CONTROL</span><h2>Un clic para sincronizar.<br><em>Un push inicia el deploy.</em></h2><p>Con el commit listo en VS Code, sincroniza la rama <code>main</code> para enviar el cambio a GitHub.</p></div>
           <div class="vscode-sync-window reveal delay-1" aria-label="Interfaz simulada de Control de Código Fuente de Visual Studio Code">
-            <div class="vscode-sync-titlebar"><span class="vscode-window-dots"><i></i><i></i><i></i></span><strong>gdg-medellin — Visual Studio Code</strong><span>⌕　◫　···</span></div>
+            <div class="vscode-sync-titlebar"><span class="vscode-window-dots"><i></i><i></i><i></i></span><strong>gdg-tacna — Visual Studio Code</strong><span>⌕　◫　···</span></div>
             <div class="vscode-sync-body">
               <div class="vscode-activity-bar" aria-hidden="true"><span>▤</span><span>⌕</span><span class="activity-selected">⑂</span><span>◉</span><span>▣</span><span>◇</span></div>
               <aside class="vscode-source-panel">
@@ -462,14 +439,14 @@
 <span>3</span>   &lt;head&gt;
 <span>4</span>     &lt;meta charset=<em>"utf-8"</em>&gt;
 <span>5</span>     &lt;meta name=<em>"viewport"</em> content=<em>"width=device-width"</em>&gt;
-<span>6</span>     &lt;title&gt;<b>DevFest Medellín 2026</b>&lt;/title&gt;
+<span>6</span>     &lt;title&gt;<b>DevFest Tacna 2026</b>&lt;/title&gt;
 <span>7</span>     &lt;link rel=<em>"stylesheet"</em> href=<em>"styles.css"</em>&gt;
 <span>8</span>   &lt;/head&gt;
 <span>9</span>   &lt;body&gt;
 <span>10</span>    &lt;header class=<em>"topbar"</em>&gt;
 <span>11</span>      &lt;nav class=<em>"nav wrap"</em>&gt;
 <span>12</span>        &lt;a class=<em>"brand"</em> href=<em>"#inicio"</em>&gt;DevFest&lt;/a&gt;
-<span>13</span>        &lt;span class=<em>"medellin"</em>&gt;Medellín · 2026&lt;/span&gt;</code></pre>
+<span>13</span>        &lt;span class=<em>"tacna"</em>&gt;Tacna · 2026&lt;/span&gt;</code></pre>
                 <div class="vscode-statusbar"><span>⑂ main ↑1</span><span>UTF-8　HTML　Ln 19, Col 1</span></div>
               </div>
             </div>
@@ -477,12 +454,12 @@
           <div class="sync-callout reveal delay-2"><span class="sync-icon">⟳</span><p>Al pulsar <b>Sincronizar cambios</b>, VS Code hace push a <code>main</code> y GitHub ejecuta la Action de producción.</p></div>
         </section>
 
-        <section class="slide slide-firebase-run" aria-label="Diapositiva 27: ejecución de Firebase Hosting en GitHub Actions">
+        <section class="slide is-removed slide-firebase-run" aria-label="Diapositiva retirada: ejecución Firebase">
           <div class="slide-heading reveal"><span class="kicker">26 — EJECUCIÓN</span><h2>El push activa<br><em>el workflow.</em></h2><p>GitHub ejecuta la Action de Firebase y muestra el estado de cada tarea.</p></div>
           <div class="run-summary-layout firebase-run-layout reveal delay-1">
             <section class="actions-run-panel" aria-label="Simulación del workflow Firebase Hosting completado">
               <div class="actions-run-top"><span class="github-mark">●</span><div><small>GITHUB ACTIONS · MAIN</small><strong>Deploy to Firebase Hosting on merge</strong></div><span class="run-menu">···</span></div>
-              <div class="run-success"><span>✓</span><div><strong>Workflow completed successfully</strong><small>push · main · Firebase Hosting</small></div></div>
+              <div class="run-success"><span>✓</span><div><strong>Workflow completed successfully</strong><small>push · main · 32s</small></div></div>
               <div class="run-job-list"><div class="run-job"><span class="job-check">✓</span><span class="job-name">build_and_deploy</span><small>success</small><span class="job-chevron">›</span></div><div class="run-job"><span class="job-check">✓</span><span class="job-name">Deploy to Firebase Hosting</span><small>success</small><span class="job-chevron">›</span></div></div>
               <div class="run-panel-foot"><span class="green-pulse"></span> TRIGGER: PUSH A MAIN</div>
             </section>
@@ -490,20 +467,20 @@
           </div>
         </section>
 
-        <section class="slide slide-firebase-log" aria-label="Diapositiva 28: log con URL del sitio publicado">
+        <section class="slide is-removed slide-firebase-log" aria-label="Diapositiva retirada: log Firebase">
           <div class="slide-heading reveal"><span class="kicker">27 — RESULTADO DEL DEPLOY</span><h2>Despliegue listo.<br><em>Tu sitio está en línea.</em></h2><p>El log de Firebase confirma la publicación y muestra la URL disponible.</p></div>
-          <div class="firebase-log-window code-window reveal delay-1"><div class="window-bar"><span></span><span></span><span></span><label>Deploy to Firebase Hosting · logs</label></div><div class="firebase-log-lines"><p><span>✓</span> Uploaded files successfully</p><p><span>✓</span> Version finalized</p><p><span>✓</span> Release complete</p><p class="log-url-label">Hosting URL:</p><a href="https://gdgmedellin-e9172.web.app" target="_blank" rel="noreferrer">https://gdgmedellin-e9172.web.app <b>↗</b></a></div></div>
+          <div class="firebase-log-window code-window reveal delay-1"><div class="window-bar"><span></span><span></span><span></span><label>Deploy to Firebase Hosting · logs</label></div><div class="firebase-log-lines"><p><span>✓</span> Uploaded files successfully</p><p><span>✓</span> Version finalized</p><p><span>✓</span> Release complete</p><p class="log-url-label">Hosting URL:</p><a href="https://gdg-tacna.web.app" target="_blank" rel="noreferrer">https://gdg-tacna.web.app <b>↗</b></a></div></div>
           <div class="firebase-live-note reveal delay-2"><span class="green-pulse"></span> La URL corresponde al proyecto de ejemplo; reemplázala por la que devuelve tu deploy.</div>
         </section>
 
-        <section class="slide slide-firebase-live" aria-label="Diapositiva 29: sitio publicado en Firebase Hosting">
+        <section class="slide is-removed slide-firebase-live" aria-label="Diapositiva retirada: sitio Firebase Live">
           <div class="slide-heading reveal"><span class="kicker">28 — PUBLICADO</span><h2>Del editor<br><em>a la web.</em></h2><p>Cada sincronización aprobada actualiza el sitio de Firebase Hosting.</p></div>
-          <div class="browser-preview reveal delay-1"><div class="browser-chrome"><div class="browser-dots"><i></i><i></i><i></i></div><div class="browser-address"><span>⌑</span> https://gdgmedellin-e9172.web.app <b>↗</b></div></div><div class="browser-content"><div class="preview-nav"><span class="preview-brand"><i>DF</i> DevFest Medellín</span><small>COMUNIDAD · TECNOLOGÍA</small></div><div class="preview-hero"><span>✳ DEVFEST MEDELLÍN · 2026</span><h3>Ideas que<br><em>mueven.</em></h3><p>Una comunidad que aprende, comparte y construye en Medellín.</p><div class="preview-button">DESCUBRE EL EVENTO <b>↗</b></div></div><div class="preview-footer"><span>FIREBASE HOSTING</span><i>✓ LIVE</i></div></div></div>
+          <div class="browser-preview reveal delay-1"><div class="browser-chrome"><div class="browser-dots"><i></i><i></i><i></i></div><div class="browser-address"><span>⌑</span> https://gdg-tacna.web.app <b>↗</b></div></div><div class="browser-content"><div class="preview-nav"><span class="preview-brand"><i>DF</i> DevFest Tacna</span><small>COMUNIDAD · TECNOLOGÍA</small></div><div class="preview-hero"><span>✳ DEVFEST TACNA · 2026</span><h3>Ideas que<br><em>mueven.</em></h3><p>Una comunidad que aprende, comparte y construye en Tacna.</p><div class="preview-button">DESCUBRE EL EVENTO <b>↗</b></div></div><div class="preview-footer"><span>FIREBASE HOSTING</span><i>✓ LIVE</i></div></div></div>
           <p class="firebase-live-note reveal delay-2"><span class="green-pulse"></span> Actualizado automáticamente desde GitHub Actions.</p>
         </section>
 
-        <section class="slide" aria-label="Diapositiva 30: buenas prácticas">
-          <div class="slide-heading reveal"><span class="kicker">29 — PARA LLEVAR</span><h2>Buenas prácticas,<br>mejores <em>flujos.</em></h2></div>
+        <section class="slide" aria-label="Diapositiva 14: buenas prácticas">
+          <div class="slide-heading reveal"><span class="kicker">13 — PARA LLEVAR</span><h2>Buenas prácticas,<br>mejores <em>flujos.</em></h2></div>
           <div class="practice-list">
             <div class="practice reveal delay-1"><span>01</span><b>Workflows reutilizables</b><i>↗</i></div>
             <div class="practice reveal delay-2"><span>02</span><b>Versiona Actions mediante SHA</b><i>↗</i></div>
@@ -513,22 +490,26 @@
           </div>
         </section>
 
-        <section class="slide slide-thanks" aria-label="Diapositiva 31: agradecimientos">
+        <section class="slide slide-thanks" aria-label="Diapositiva 15: agradecimientos">
           <div class="thanks-orbit" aria-hidden="true"><span>✳</span></div>
-          <span class="kicker reveal">GITHUB EDUCATION · GDG MEDELLÍN</span>
+          <span class="kicker reveal">GITHUB EDUCATION · GDG TACNA</span>
           <h2 class="reveal delay-1">¡Muchas<br><em>gracias!</em></h2>
           <p class="reveal delay-2">Sigamos construyendo en comunidad.</p>
-          <div class="qr-cta reveal delay-4">
-            <a class="qr-link" href="https://github.com/eduorm1" target="_blank" rel="noreferrer" aria-label="Escanear o abrir el perfil de GitHub de @eduardoorm">
-              <svg id="profile-qr" viewBox="0 0 41 41" role="img" aria-labelledby="qr-title qr-description" shape-rendering="crispEdges">
-                <title id="qr-title">Código QR de @eduardoorm</title>
-                <desc id="qr-description">Escanea para visitar github.com/eduardoorm</desc>
-                <rect width="41" height="41" fill="#fff" />
-                <path fill="#101114" d="" />
-              </svg>
-            </a>
-            <span>ESCANEA Y CONECTA</span>
-            <small>github.com/eduardoorm</small>
+          <div class="qr-row reveal delay-4">
+            <div class="qr-cta">
+              <a class="qr-link" href="https://www.linkedin.com/in/jose-orme%C3%B1o/" target="_blank" rel="noreferrer" aria-label="Abrir el perfil de LinkedIn de José Ormeño">
+                <img src="assets/qr-linkedin.svg" alt="Código QR del perfil de LinkedIn de José Ormeño" width="124" height="124">
+              </a>
+              <span>LINKEDIN</span>
+              <small>in/jose-ormeño</small>
+            </div>
+            <div class="qr-cta">
+              <a class="qr-link" href="https://www.instagram.com/eduorm1/" target="_blank" rel="noreferrer" aria-label="Abrir el perfil de Instagram @eduorm1">
+                <img src="assets/qr-instagram.svg" alt="Código QR del perfil de Instagram @eduorm1" width="124" height="124">
+              </a>
+              <span>INSTAGRAM</span>
+              <small>@eduorm1</small>
+            </div>
           </div>
         </section>
       </div>
