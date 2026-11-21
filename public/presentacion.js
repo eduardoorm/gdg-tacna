@@ -31,9 +31,186 @@
     previousButton.disabled = currentIndex === 0;
     nextButton.disabled = currentIndex === slides.length - 1;
 
+    runVideos.forEach((video) =>
+      slides[currentIndex].contains(video.root) ? video.enter() : video.leave(),
+    );
+
     if (updateHistory) {
       history.replaceState(null, "", `#slide-${currentIndex + 1}`);
     }
+  }
+
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  // ---- Animación tipo video: workflow → evento push → Action ejecutándose ----
+  // Cada elemento declara su momento en la línea de tiempo:
+  //   data-at="s"               → clase "on" desde el segundo s
+  //   data-from / data-to       → "is-running" entre ambos, "is-done" después
+  //   data-type + -from / -to   → texto que se escribe letra por letra
+  //   data-states="0=a;6.8=b"   → cambia el texto según el segundo
+  //   data-timer                → cronómetro del job
+  function createRunVideo(root) {
+    const total = Number(root.dataset.duration) || 17;
+    const num = (value) => Number(value);
+    const timed = [...root.querySelectorAll("[data-at]")].map((el) => ({
+      el,
+      at: num(el.dataset.at),
+    }));
+    const ranged = [...root.querySelectorAll("[data-from]")].map((el) => ({
+      el,
+      from: num(el.dataset.from),
+      to: num(el.dataset.to),
+    }));
+    const typers = [...root.querySelectorAll("[data-type]")].map((el) => ({
+      el,
+      text: el.dataset.type,
+      from: num(el.dataset.typeFrom),
+      to: num(el.dataset.typeTo),
+    }));
+    const stated = [...root.querySelectorAll("[data-states]")].map((el) => ({
+      el,
+      states: el.dataset.states.split(";").map((pair) => {
+        const cut = pair.indexOf("=");
+        return [Number(pair.slice(0, cut)), pair.slice(cut + 1)];
+      }),
+    }));
+    const timers = [...root.querySelectorAll("[data-timer]")].map((el) => ({
+      el,
+      from: num(el.dataset.timerFrom),
+      to: num(el.dataset.timerTo),
+      max: num(el.dataset.timerMax),
+    }));
+    const chapters = [...root.querySelectorAll("[data-chapter]")].map((el) => ({
+      el,
+      at: num(el.dataset.chapter),
+    }));
+    const fill = root.querySelector(".rv-fill");
+    const clock = root.querySelector(".rv-time");
+    const track = root.querySelector(".rv-track");
+    const playButton = root.querySelector(".rv-play");
+
+    let t = 0;
+    let active = false;
+    let wantPlay = !reduceMotion;
+    let frame = 0;
+    let last = 0;
+
+    chapters.forEach((chapter) => {
+      chapter.el.style.left = `${(chapter.at / total) * 100}%`;
+    });
+
+    const clamp01 = (value) => Math.max(0, Math.min(1, value));
+    const setText = (el, value) => {
+      if (el.textContent !== value) el.textContent = value;
+    };
+    const fmt = (seconds) => `00:${String(Math.floor(seconds)).padStart(2, "0")}`;
+
+    function render() {
+      timed.forEach(({ el, at }) => el.classList.toggle("on", t >= at));
+      ranged.forEach(({ el, from, to }) => {
+        el.classList.toggle("is-running", t >= from && t < to);
+        el.classList.toggle("is-done", t >= to);
+      });
+      typers.forEach(({ el, text, from, to }) => {
+        const k = clamp01((t - from) / (to - from));
+        setText(el, text.slice(0, Math.round(k * text.length)));
+      });
+      stated.forEach(({ el, states }) => {
+        let value = states[0][1];
+        states.forEach(([at, label]) => {
+          if (t >= at) value = label;
+        });
+        setText(el, value);
+      });
+      timers.forEach(({ el, from, to, max }) => {
+        setText(el, `${Math.round(clamp01((t - from) / (to - from)) * max)}s`);
+      });
+      chapters.forEach((chapter, i) => {
+        const next = chapters[i + 1];
+        chapter.el.classList.toggle(
+          "is-current",
+          t >= chapter.at && (!next || t < next.at),
+        );
+      });
+      fill.style.width = `${(t / total) * 100}%`;
+      setText(clock, `${fmt(t)} / ${fmt(total)}`);
+    }
+
+    function tick(now) {
+      t += Math.min(0.1, (now - last) / 1000);
+      last = now;
+      if (t >= total) t = 0; // vuelve a empezar, como un video en loop
+      render();
+      frame = requestAnimationFrame(tick);
+    }
+
+    function sync() {
+      cancelAnimationFrame(frame);
+      root.classList.toggle("is-paused", !wantPlay);
+      playButton.setAttribute(
+        "aria-label",
+        wantPlay ? "Pausar animación" : "Reproducir animación",
+      );
+      if (active && wantPlay) {
+        last = performance.now();
+        frame = requestAnimationFrame(tick);
+      }
+    }
+
+    playButton.addEventListener("click", () => {
+      wantPlay = !wantPlay;
+      sync();
+      playButton.blur(); // devuelve las flechas del teclado a la presentación
+    });
+
+    track.addEventListener("click", (event) => {
+      const rect = track.getBoundingClientRect();
+      if (!rect.width) return;
+      t = clamp01((event.clientX - rect.left) / rect.width) * (total - 0.01);
+      render();
+    });
+
+    return {
+      root,
+      enter() {
+        if (active) return;
+        active = true;
+        wantPlay = !reduceMotion;
+        t = reduceMotion ? total - 0.01 : 0;
+        render();
+        sync();
+      },
+      leave() {
+        if (!active) return;
+        active = false;
+        sync();
+      },
+    };
+  }
+
+  const runVideos = [...document.querySelectorAll("[data-run-video]")].map(
+    createRunVideo,
+  );
+
+  // ---- Diapositiva del speaker: inclinación 3D siguiendo el mouse ----
+  if (!reduceMotion) {
+    document.querySelectorAll("[data-tilt]").forEach((el) => {
+      const host = el.closest(".slide");
+      host.addEventListener("pointermove", (event) => {
+        if (event.pointerType !== "mouse") return;
+        const rect = host.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+        el.style.setProperty("--tilt-y", `${(x * 12).toFixed(2)}deg`);
+        el.style.setProperty("--tilt-x", `${(-y * 9).toFixed(2)}deg`);
+      });
+      host.addEventListener("pointerleave", () => {
+        el.style.removeProperty("--tilt-x");
+        el.style.removeProperty("--tilt-y");
+      });
+    });
   }
 
   function fromHash() {

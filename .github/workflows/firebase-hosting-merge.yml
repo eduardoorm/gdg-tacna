@@ -6,6 +6,12 @@ on:
   push:
     branches:
       - main
+
+# Producción: un deploy a la vez, en cola. Nunca se corta uno a la mitad.
+concurrency:
+  group: production
+  cancel-in-progress: false
+
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
@@ -14,6 +20,6 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_GDG_TACNA }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_GDG_TACNA_F3CFF }}
           channelId: live
-          projectId: gdg-tacna
+          projectId: gdg-tacna-f3cff

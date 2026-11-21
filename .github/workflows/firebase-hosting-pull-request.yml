@@ -7,6 +7,12 @@ permissions:
   checks: write
   contents: read
   pull-requests: write
+
+# Un carril por PR; en cada carril solo sobrevive el último push.
+concurrency:
+  group: preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   build_and_preview:
     if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
@@ -16,5 +22,5 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_GDG_TACNA }}
-          projectId: gdg-tacna
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_GDG_TACNA_F3CFF }}
+          projectId: gdg-tacna-f3cff
