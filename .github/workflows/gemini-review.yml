@@ -1,0 +1,48 @@
+name: Gemini Code Review
+on: pull_request
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: gemini-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Obtener diff del PR
+        run: git diff origin/${{ github.base_ref }}...HEAD -- . ':!*.lock' > pr.diff
+
+      - name: Revisar con Gemini
+        id: gemini
+        uses: google-github-actions/run-gemini-cli@v0.1.22
+        with:
+          gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
+          prompt: |
+            Eres un revisor de código senior. Lee el archivo pr.diff con el diff de este Pull Request.
+            Revisa SOLO las líneas agregadas y reporta problemas de: seguridad, bugs y rendimiento.
+            Responde en español, en Markdown, con este formato por hallazgo:
+            ### <emoji> <Categoría> · <Severidad Alta|Media|Baja>
+            **Archivo:** `ruta:línea`
+            <explicación breve>
+            **Sugerencia:**
+            ```js
+            <código corregido>
+            ```
+            Si no hay problemas, responde solo: "✅ Sin hallazgos. ¡Buen trabajo!"
+
+      - name: Publicar review en el PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REVIEW: ${{ steps.gemini.outputs.summary }}
+        run: |
+          { echo "## ✦ Gemini Code Review"; echo; echo "$REVIEW"; } > review.md
+          gh pr comment ${{ github.event.pull_request.number }} --body-file review.md
