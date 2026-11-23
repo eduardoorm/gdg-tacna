@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DevFest Ica · Speakers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  /* ====== PALETA: cambiá estos valores por los del DevFest Ica ====== */
+  :root {
+    --bg: #ffffff;
+    --ink: #1f1f1f;
+    --ink-soft: #444746;
+    --blue: #4285f4;
+    --blue-dark: #1a54c4;
+    --red: #ea4335;
+    --yellow: #f9ab00;
+    --green: #34a853;
+    --font: "Google Sans", "Outfit", system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: #111;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    font-family: var(--font);
+    color: var(--ink);
+  }
+
+  /* Escenario 16:9 que escala a cualquier pantalla */
+  .stage {
+    position: relative;
+    width: min(100vw, 177.78vh);
+    aspect-ratio: 16 / 9;
+    background: var(--bg);
+    overflow: hidden;
+    font-size: calc(min(100vw, 177.78vh) / 100); /* 1em = 1% del ancho */
+  }
+
+  /* ---------- Formas decorativas ---------- */
+  .shape { position: absolute; will-change: transform, opacity; }
+  .pill-blue {
+    width: 70em; height: 14em; border-radius: 7em;
+    background: var(--blue);
+    right: -22em; bottom: -2em;
+    transform-origin: right center;
+    rotate: -48deg;
+  }
+  .circle-dark {
+    width: 16em; height: 16em; border-radius: 50%;
+    background: var(--blue-dark);
+    right: -7em; top: 28%;
+  }
+  .half-yellow {
+    width: 16em; height: 16em; border-radius: 50%;
+    background: var(--yellow);
+    left: 58%; bottom: -10em;
+  }
+  .dot-red {
+    width: 4.2em; height: 4.2em; border-radius: 50%;
+    background: var(--red);
+    left: 6em; top: 7em;
+  }
+  .ring-green {
+    width: 9em; height: 9em; border-radius: 50%;
+    border: 1.6em solid var(--green);
+    left: -3.5em; bottom: 8em;
+  }
+  .dots-grid {
+    left: 78%; top: 8%;
+    display: grid; grid-template-columns: repeat(5, 1em); gap: 1em;
+  }
+  .dots-grid i { width: .45em; height: .45em; border-radius: 50%; background: #c4c7c5; display: block; }
+
+  /* ---------- Contenido ---------- */
+  .content {
+    position: absolute; inset: 0;
+    display: flex; align-items: center;
+    padding-left: 8em; gap: 5em;
+  }
+
+  .photo-wrap { position: relative; width: 26em; height: 26em; flex: none; }
+  .photo-ring {
+    position: absolute; inset: -1.2em;
+    width: calc(100% + 2.4em); height: calc(100% + 2.4em);
+    rotate: -90deg;
+  }
+  .photo-ring circle {
+    fill: none; stroke-width: 1.1; stroke-linecap: round;
+    stroke-dasharray: 100; stroke-dashoffset: 100;
+  }
+  .photo {
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    background: #5f6368 center / cover no-repeat;
+    display: grid; place-items: center;
+    color: #fff; font-size: 8em; font-weight: 600;
+    clip-path: circle(0% at 50% 50%);
+  }
+
+  .text { max-width: 50em; }
+  .event-chip {
+    display: inline-flex; align-items: center; gap: .6em;
+    font-size: 1.5em; font-weight: 500; color: var(--ink-soft);
+    margin-bottom: 1.2em;
+  }
+  .event-chip .logo { display: inline-flex; gap: .25em; }
+  .event-chip .logo b { width: .7em; height: .7em; border-radius: 50%; display: block; }
+
+  .name {
+    font-size: 6.4em; font-weight: 600; letter-spacing: -.02em; line-height: 1.05;
+    margin-bottom: .25em;
+  }
+  .line { display: block; overflow: hidden; padding-bottom: .08em; }
+  .line > span { display: inline-block; }
+
+  .role { font-size: 3em; font-weight: 400; line-height: 1.25; color: var(--ink-soft); }
+
+  .talk {
+    margin-top: 1.8em;
+    display: inline-flex; align-items: center; gap: .8em;
+    padding: .7em 1.4em .7em .8em;
+    border-radius: 3em;
+    background: #f1f3f4;
+    font-size: 1.8em; font-weight: 500;
+  }
+  .talk .tag {
+    background: var(--blue); color: #fff;
+    border-radius: 2em; padding: .25em .8em; font-size: .75em;
+    text-transform: uppercase; letter-spacing: .06em;
+  }
+
+  /* ---------- Ayuda ---------- */
+  .hint {
+    position: fixed; bottom: 12px; left: 50%; translate: -50% 0;
+    font: 12px/1.4 system-ui, sans-serif; color: #aaa;
+    background: rgba(0,0,0,.6); padding: 6px 12px; border-radius: 20px;
+    transition: opacity .4s;
+  }
+  body.presenting .hint { opacity: 0; }
+</style>
+</head>
+<body>
+  <div class="stage" id="stage">
+    <div class="shape dots-grid" id="dots"></div>
+    <div class="shape dot-red"></div>
+    <div class="shape ring-green"></div>
+    <div class="shape half-yellow"></div>
+    <div class="shape pill-blue"></div>
+    <div class="shape circle-dark"></div>
+
+    <div class="content">
+      <div class="photo-wrap">
+        <svg class="photo-ring" viewBox="0 0 36 36">
+          <circle cx="18" cy="18" r="17" pathLength="100" stroke="var(--blue)" />
+          <circle cx="18" cy="18" r="17" pathLength="100" stroke="var(--red)" />
+          <circle cx="18" cy="18" r="17" pathLength="100" stroke="var(--yellow)" />
+          <circle cx="18" cy="18" r="17" pathLength="100" stroke="var(--green)" />
+        </svg>
+        <div class="photo" id="photo"></div>
+      </div>
+
+      <div class="text">
+        <div class="event-chip" id="chip">
+          <span class="logo"><b style="background:var(--blue)"></b><b style="background:var(--red)"></b><b style="background:var(--yellow)"></b><b style="background:var(--green)"></b></span>
+          DevFest Ica 2026
+        </div>
+        <h1 class="name" id="name"></h1>
+        <p class="role" id="role"></p>
+        <div class="talk" id="talk"><span class="tag">Charla</span><span id="talkTitle"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hint">→ / Espacio: siguiente · ←: anterior · R: repetir · F: pantalla completa</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    /* ====== SPEAKERS: editá esta lista ======
+       photo: ruta relativa (ej. "assets/foto.jpg"). Si va vacío, se muestran las iniciales. */
+    const SPEAKERS = [
+      {
+        name: "Eduardo Ormeño",
+        role: ["Software Engineer,", "Visma LATAM"],
+        talk: "Agentes de IA en el día a día del desarrollo",
+        photo: "assets/eduardo-speaker.jpg",
+      },
+      {
+        name: "Nombre Apellido",
+        role: ["Cargo / Rol,", "Empresa · GDE"],
+        talk: "Título de la charla",
+        photo: "",
+      },
+    ];
+
+    const $ = (id) => document.getElementById(id);
+    const dots = $("dots");
+    for (let i = 0; i < 25; i++) dots.appendChild(document.createElement("i"));
+
+    const splitLines = (lines) =>
+      lines.map((l) => `<span class="line"><span>${l}</span></span>`).join("");
+
+    const initials = (n) => n.split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+
+    let index = Number(new URLSearchParams(location.search).get("s") || 1) - 1;
+    if (!(index >= 0 && index < SPEAKERS.length)) index = 0;
+    let tl;
+
+    function render(s) {
+      $("name").innerHTML = splitLines(s.name.split(" ").length > 2
+        ? [s.name.split(" ").slice(0, 2).join(" "), s.name.split(" ").slice(2).join(" ")]
+        : [s.name]);
+      $("role").innerHTML = splitLines(s.role);
+      $("talkTitle").textContent = s.talk;
+      $("talk").style.display = s.talk ? "" : "none";
+      const photo = $("photo");
+      if (s.photo) {
+        photo.style.backgroundImage = `url("${s.photo}")`;
+        photo.textContent = "";
+      } else {
+        photo.style.backgroundImage = "";
+        photo.textContent = initials(s.name);
+      }
+    }
+
+    function intro() {
+      const rings = document.querySelectorAll(".photo-ring circle");
+      tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+
+      tl.set(rings, { strokeDashoffset: 100, rotate: 0, transformOrigin: "50% 50%" })
+        // Formas entran desde los bordes
+        .from(".pill-blue", { xPercent: 70, yPercent: 120, duration: 1.4 }, 0)
+        .from(".circle-dark", { scale: 0, duration: 1.2, ease: "back.out(1.8)" }, 0.25)
+        .from(".half-yellow", { y: "12em", duration: 1.2 }, 0.35)
+        .from(".dot-red", { scale: 0, duration: 0.9, ease: "back.out(3)" }, 0.5)
+        .from(".ring-green", { x: "-12em", rotate: -180, duration: 1.3 }, 0.4)
+        .from("#dots i", { scale: 0, duration: 0.5, stagger: { each: 0.02, from: "random" }, ease: "back.out(2)" }, 0.6)
+        // Anillo de colores se dibuja y luego se reparte en 4 segmentos
+        .to(rings, { strokeDashoffset: 0, duration: 1.1, ease: "power3.inOut", stagger: 0.08 }, 0.4)
+        .to(rings, { strokeDasharray: "22 78", rotate: (i) => i * 90, duration: 0.9, ease: "power3.inOut" }, 1.4)
+        // Foto se revela como un iris
+        .to("#photo", { clipPath: "circle(50% at 50% 50%)", duration: 1.1, ease: "expo.inOut" }, 0.6)
+        .from("#photo", { scale: 1.25, duration: 1.6 }, 0.6)
+        // Textos
+        .from("#chip", { y: 20, opacity: 0, duration: 0.8 }, 1.0)
+        .from("#name .line > span", { yPercent: 110, duration: 1.1, stagger: 0.12 }, 1.1)
+        .from("#role .line > span", { yPercent: 110, duration: 1, stagger: 0.1 }, 1.35)
+        .from("#talk", { y: 24, opacity: 0, scale: 0.96, duration: 0.9 }, 1.7);
+
+      // Movimiento sutil continuo mientras el speaker está en pantalla
+      gsap.to(".photo-ring", { rotate: "+=360", duration: 40, ease: "none", repeat: -1 });
+      gsap.to(".circle-dark", { y: "-1.5em", duration: 3, yoyo: true, repeat: -1, ease: "sine.inOut" });
+      gsap.to(".dot-red", { y: "1em", duration: 2.4, yoyo: true, repeat: -1, ease: "sine.inOut" });
+      return tl;
+    }
+
+    function outro() {
+      return gsap.timeline({ defaults: { ease: "power3.in", duration: 0.5 } })
+        .to("#talk, #chip", { opacity: 0, y: -10 }, 0)
+        .to("#name .line > span, #role .line > span", { yPercent: -110, stagger: 0.04 }, 0)
+        .to("#photo", { clipPath: "circle(0% at 50% 50%)", duration: 0.6 }, 0.1)
+        .to(".photo-ring circle", { strokeDashoffset: -100, duration: 0.6 }, 0.1);
+    }
+
+    function show(i, animateOut = true) {
+      index = (i + SPEAKERS.length) % SPEAKERS.length;
+      history.replaceState(null, "", `?s=${index + 1}`);
+      const go = () => {
+        gsap.killTweensOf("*");
+        gsap.set(["#talk", "#chip", "#photo", ".shape", "#dots i", ".line > span", ".photo-ring circle", ".photo-ring"],
+          { clearProps: "all" });
+        render(SPEAKERS[index]);
+        intro();
+      };
+      animateOut && tl ? outro().eventCallback("onComplete", go) : go();
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (["ArrowRight", " ", "PageDown"].includes(e.key)) { e.preventDefault(); show(index + 1); }
+      else if (["ArrowLeft", "PageUp"].includes(e.key)) show(index - 1);
+      else if (e.key.toLowerCase() === "r") show(index, false);
+      else if (e.key.toLowerCase() === "f") {
+        document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+      }
+      document.body.classList.add("presenting");
+    });
+    $("stage").addEventListener("click", () => show(index + 1));
+
+    document.fonts.ready.then(() => show(index, false));
+  </script>
+</body>
+</html>
